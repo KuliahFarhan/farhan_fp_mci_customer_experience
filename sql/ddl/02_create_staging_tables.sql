@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS stg_order_reviews;
 CREATE TABLE stg_order_reviews (
     review_id String,
     order_id String,
-    review_score Float64,
+    review_score Int32,
     review_comment_title Nullable(String),
     review_comment_message Nullable(String),
     review_creation_date Nullable(DateTime),
@@ -31,7 +31,7 @@ ORDER BY review_id;
 DROP TABLE IF EXISTS stg_order_items;
 CREATE TABLE stg_order_items (
     order_id String,
-    order_item_id String,
+    order_item_id Int32,
     product_id String,
     seller_id String,
     shipping_limit_date Nullable(DateTime),
@@ -45,7 +45,7 @@ DROP TABLE IF EXISTS stg_customers;
 CREATE TABLE stg_customers (
     customer_id String,
     customer_unique_id String,
-    customer_zip_code_prefix String,
+    customer_zip_code_prefix Int32,
     customer_city String,
     customer_state String
 ) ENGINE = MergeTree()
@@ -55,7 +55,7 @@ ORDER BY customer_id;
 DROP TABLE IF EXISTS stg_sellers;
 CREATE TABLE stg_sellers (
     seller_id String,
-    seller_zip_code_prefix String,
+    seller_zip_code_prefix Int32,
     seller_city String,
     seller_state String
 ) ENGINE = MergeTree()
@@ -88,9 +88,9 @@ ORDER BY product_category_name;
 DROP TABLE IF EXISTS stg_order_payments;
 CREATE TABLE stg_order_payments (
     order_id String,
-    payment_sequential Float64,
+    payment_sequential Int32,
     payment_type String,
-    payment_installments Float64,
+    payment_installments Int32,
     payment_value Float64
 ) ENGINE = MergeTree()
 ORDER BY order_id;
