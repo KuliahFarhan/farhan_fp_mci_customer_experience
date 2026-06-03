@@ -1,0 +1,90 @@
+version: "3.8"
+
+services:
+  # --- Analytical Database ---
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: fp_mci_clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - CLICKHOUSE_DB=fp_mci_customer_experience
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=password
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "localhost:8123/ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # --- Airflow Metadata DB ---
+  postgres:
+    image: postgres:13
+    container_name: fp_mci_postgres
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U airflow"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # --- Airflow ---
+  airflow:
+    image: apache/airflow:2.7.1-python3.9
+    container_name: fp_mci_airflow
+    depends_on:
+      postgres:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__FERNET_KEY=
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__CORE__DUMB_INIT_CMD=True
+      - AIRFLOW__DATABASE__LOAD_DEFAULT_CONNECTIONS=False
+      # ClickHouse Connection Env (for easier use in Python operators)
+      - CLICKHOUSE_HOST=clickhouse
+      - CLICKHOUSE_PORT=8123
+      - CLICKHOUSE_DATABASE=fp_mci_customer_experience
+      - CLICKHOUSE_USER=default
+      - CLICKHOUSE_PASSWORD=password
+      - _PIP_ADDITIONAL_REQUIREMENTS=pandas numpy clickhouse-connect python-dotenv
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./sql:/opt/airflow/sql
+      - ./data/raw:/opt/airflow/data/raw
+      - ./data/processed:/opt/airflow/data/processed
+      - ./requirements.txt:/requirements.txt
+    ports:
+      - "8085:8080"
+    command: standalone
+    user: "${AIRFLOW_UID:-50000}:0"
+
+  # --- BI & Visualization ---
+  metabase:
+    image: metabase/metabase:latest
+    container_name: fp_mci_metabase
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase_data:/metabase.db
+    restart: always
+
+volumes:
+  clickhouse_data:
+  postgres_data:
+  metabase_data:

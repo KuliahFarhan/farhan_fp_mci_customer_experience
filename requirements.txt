@@ -1,0 +1,5 @@
+pandas
+numpy
+clickhouse-connect
+python-dotenv
+apache-airflow-providers-clickhouse
