@@ -1,5 +1,7 @@
 USE fp_mci_customer_experience;
 
+SET join_use_nulls = 1;
+
 TRUNCATE TABLE mart_customer_experience_orders;
 
 INSERT INTO mart_customer_experience_orders
@@ -22,9 +24,9 @@ SELECT
     o.customer_id,
     o.order_status,
     r.review_id,
-    CAST(r.review_score, 'Nullable(Int32)') as review_score,
-    r.review_creation_date,
-    toStartOfMonth(r.review_creation_date) as review_month,
+    r.review_score as review_score,
+    r.review_creation_date as review_creation_date,
+    if(r.review_creation_date IS NULL, NULL, toStartOfMonth(r.review_creation_date)) as review_month,
     c.customer_city,
     c.customer_state,
     o.order_purchase_timestamp,
@@ -56,8 +58,8 @@ SELECT
         ELSE 'late_15plus_days'
     END AS delay_bucket,
     -- Low Rating Flags
-    IF(r.review_score <= 2, 1, 0) as is_low_rating_2,
-    IF(r.review_score <= 3, 1, 0) as is_low_rating_3
+    if(r.review_score IS NOT NULL AND r.review_score <= 2, 1, 0) as is_low_rating_2,
+    if(r.review_score IS NOT NULL AND r.review_score <= 3, 1, 0) as is_low_rating_3
 FROM stg_orders o
 LEFT JOIN latest_reviews r ON o.order_id = r.order_id
 LEFT JOIN stg_customers c ON o.customer_id = c.customer_id;

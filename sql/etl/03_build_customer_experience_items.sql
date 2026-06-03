@@ -1,5 +1,7 @@
 USE fp_mci_customer_experience;
 
+SET join_use_nulls = 1;
+
 TRUNCATE TABLE mart_customer_experience_items;
 
 INSERT INTO mart_customer_experience_items

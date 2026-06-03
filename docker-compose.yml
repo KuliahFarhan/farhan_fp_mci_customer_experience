@@ -66,6 +66,7 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - ./sql:/opt/airflow/sql
+      - ./scripts:/opt/airflow/scripts
       - ./data/raw:/opt/airflow/data/raw
       - ./data/processed:/opt/airflow/data/processed
       - ./requirements.txt:/requirements.txt
