@@ -1,0 +1,146 @@
+{
+  "best_model": "random_forest",
+  "target": "is_low_rating_2",
+  "target_distribution": {
+    "0": 84179,
+    "1": 14494
+  },
+  "numerical_features": [
+    "delivery_days",
+    "delay_days",
+    "item_count",
+    "seller_count",
+    "total_price",
+    "total_freight",
+    "avg_price",
+    "avg_freight"
+  ],
+  "categorical_features": [
+    "delivery_status",
+    "delay_bucket",
+    "customer_state",
+    "customer_city",
+    "main_product_category",
+    "main_seller_state"
+  ],
+  "metrics": {
+    "logistic_regression": {
+      "accuracy": 0.8531542944008107,
+      "precision": 0.5001547508511297,
+      "recall": 0.5574335977923421,
+      "f1_score": 0.5272430668841762,
+      "roc_auc": 0.7881900743909285,
+      "confusion_matrix": [
+        [
+          15221,
+          1615
+        ],
+        [
+          1283,
+          1616
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.92      0.90      0.91     16836\n           1       0.50      0.56      0.53      2899\n\n    accuracy                           0.85     19735\n   macro avg       0.71      0.73      0.72     19735\nweighted avg       0.86      0.85      0.86     19735\n"
+    },
+    "random_forest": {
+      "accuracy": 0.8747909804915125,
+      "precision": 0.5857371794871795,
+      "recall": 0.5043118316660917,
+      "f1_score": 0.5419833178869323,
+      "roc_auc": 0.7822586372063149,
+      "confusion_matrix": [
+        [
+          15802,
+          1034
+        ],
+        [
+          1437,
+          1462
+        ]
+      ],
+      "classification_report": "              precision    recall  f1-score   support\n\n           0       0.92      0.94      0.93     16836\n           1       0.59      0.50      0.54      2899\n\n    accuracy                           0.87     19735\n   macro avg       0.75      0.72      0.73     19735\nweighted avg       0.87      0.87      0.87     19735\n"
+    }
+  },
+  "top_feature_importance": [
+    {
+      "feature": "delivery_status_on_time_or_early",
+      "importance": 0.2224021804860575
+    },
+    {
+      "feature": "delay_bucket_early_or_on_time",
+      "importance": 0.20117871324333073
+    },
+    {
+      "feature": "delivery_status_late",
+      "importance": 0.0935206748594483
+    },
+    {
+      "feature": "delay_days",
+      "importance": 0.08623406370654517
+    },
+    {
+      "feature": "delivery_days",
+      "importance": 0.07681061590713474
+    },
+    {
+      "feature": "delivery_status_unknown",
+      "importance": 0.059134308778727655
+    },
+    {
+      "feature": "delay_bucket_unknown",
+      "importance": 0.04352242867360807
+    },
+    {
+      "feature": "item_count",
+      "importance": 0.0308287368847435
+    },
+    {
+      "feature": "total_freight",
+      "importance": 0.025454893492399152
+    },
+    {
+      "feature": "seller_count",
+      "importance": 0.023403727628024232
+    },
+    {
+      "feature": "delay_bucket_late_8_14_days",
+      "importance": 0.02031819942549552
+    },
+    {
+      "feature": "delay_bucket_late_15plus_days",
+      "importance": 0.01988336076402334
+    },
+    {
+      "feature": "main_seller_state_unknown",
+      "importance": 0.015251411156177555
+    },
+    {
+      "feature": "avg_freight",
+      "importance": 0.011732261927567657
+    },
+    {
+      "feature": "delay_bucket_late_4_7_days",
+      "importance": 0.011279044806009478
+    },
+    {
+      "feature": "avg_price",
+      "importance": 0.010875832755997015
+    },
+    {
+      "feature": "total_price",
+      "importance": 0.007962281173635555
+    },
+    {
+      "feature": "delay_bucket_late_1_3_days",
+      "importance": 0.006001404262750704
+    },
+    {
+      "feature": "customer_state_RJ",
+      "importance": 0.002883096076845779
+    },
+    {
+      "feature": "main_product_category_unknown",
+      "importance": 0.0026458156094662506
+    }
+  ]
+}
