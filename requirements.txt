@@ -7,3 +7,10 @@ scikit-learn
 joblib
 matplotlib
 lightgbm
+seaborn
+wordcloud
+nltk
+bertopic
+sentence-transformers
+umap-learn
+hdbscan

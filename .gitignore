@@ -4,5 +4,9 @@ data/processed/*
 .ipynb_checkpoints/
 __pycache__/
 .env
+.venv/
+.venv-*/
+venv/
+env/
 models/*.pkl
 models/*.joblib
