@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -27,7 +28,8 @@ REQUIRED_FILES = [
     "sellers.csv",
     "products.csv",
     "category_translation.csv",
-    "order_payments.csv"
+    "order_payments.csv",
+    "geolocation.csv"
 ]
 
 # --- Helper Functions ---
@@ -82,7 +84,7 @@ def run_load_script_func():
     env["CLICKHOUSE_PASSWORD"] = CH_PASSWORD
     
     result = subprocess.run(
-        ["python", str(script_path)],
+        [sys.executable, str(script_path)],
         capture_output=True,
         text=True,
         env=env
@@ -103,6 +105,8 @@ def validate_pipeline_outputs_func():
         "stg_orders",
         "stg_order_reviews",
         "stg_order_items",
+        "stg_geolocation",
+        "geo_zip_prefix_reference",
         "mart_customer_experience_orders",
         "mart_customer_experience_items",
         "mart_monthly_review",
@@ -202,6 +206,12 @@ with DAG(
         python_callable=run_load_script_func,
     )
 
+    build_geo_zip_prefix_reference = PythonOperator(
+        task_id="build_geo_zip_prefix_reference",
+        python_callable=run_sql_file_func,
+        op_kwargs={"sql_file_relative_path": "etl/04_build_geo_zip_prefix_reference.sql"},
+    )
+
     create_mart_tables = PythonOperator(
         task_id="create_mart_tables",
         python_callable=run_sql_file_func,
@@ -241,5 +251,5 @@ with DAG(
 
     # --- Task Dependencies ---
     start >> validate_raw_files >> create_ch_db >> create_stg_tables >> load_csv_to_stg >> \
-    create_mart_tables >> build_mart_orders >> build_mart_items >> \
+    build_geo_zip_prefix_reference >> create_mart_tables >> build_mart_orders >> build_mart_items >> \
     build_monthly_trend >> build_delivery_perf >> validate_outputs >> end

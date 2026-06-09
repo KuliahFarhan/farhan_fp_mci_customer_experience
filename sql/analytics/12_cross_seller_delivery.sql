@@ -27,6 +27,7 @@ SELECT
     low_rating_2_rate,
     late_rate,
     avg_delay_days,
+    -- Heuristic dashboard cutoffs: >=25% low-rating and >=15% late-rate mark review and delivery risk; review against observed distributions before operational use.
     multiIf(
         low_rating_2_rate >= 25 AND late_rate >= 15, 'High risk seller',
         late_rate >= 15, 'Delivery issue seller',

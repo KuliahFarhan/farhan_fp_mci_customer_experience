@@ -17,4 +17,5 @@ SELECT
     avg(delivery_days) as avg_delivery_days,
     avg(delay_days) as avg_delay_days
 FROM mart_customer_experience_orders
+WHERE review_score IS NOT NULL
 GROUP BY delivery_status, delay_bucket;

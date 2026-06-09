@@ -56,7 +56,8 @@ SELECT
     low_rating_2_rate,
     late_rate,
     avg_delay_days,
-    round(low_rating_2_count * 0.5 + low_rating_2_rate * 10 + late_rate * 5, 2) AS priority_score,
+    -- Impact-aware prioritization: sqrt volume keeps large segments important without letting raw count dominate rates.
+    round(sqrt(low_rating_2_count) * 5 + low_rating_2_rate * 10 + late_rate * 5, 2) AS priority_score,
     multiIf(
         late_rate >= 15, 'Delivery SLA / logistics review',
         segment_type = 'seller', 'Seller monitoring and coaching',

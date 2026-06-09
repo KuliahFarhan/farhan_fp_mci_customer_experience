@@ -22,6 +22,7 @@ CREATE TABLE mart_customer_experience_orders (
     is_low_rating_2 UInt8,
     is_low_rating_3 UInt8
 ) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(review_month)
 ORDER BY (review_month, order_id)
 SETTINGS allow_nullable_key = 1;
 
@@ -51,6 +52,7 @@ CREATE TABLE mart_customer_experience_items (
     is_low_rating_2 UInt8,
     is_low_rating_3 UInt8
 ) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(review_month)
 ORDER BY (review_month, seller_id, product_category_name_english, order_id)
 SETTINGS allow_nullable_key = 1;
 
@@ -65,6 +67,7 @@ CREATE TABLE mart_monthly_review (
     low_rating_2_rate Float64,
     low_rating_3_rate Float64
 ) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(review_month)
 ORDER BY review_month;
 
 -- D. Mart Delivery Performance

@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS stg_order_reviews;
 CREATE TABLE stg_order_reviews (
     review_id String,
     order_id String,
-    review_score Int32,
+    review_score Nullable(Int32),
     review_comment_title Nullable(String),
     review_comment_message Nullable(String),
     review_creation_date Nullable(DateTime),
@@ -94,3 +94,14 @@ CREATE TABLE stg_order_payments (
     payment_value Float64
 ) ENGINE = MergeTree()
 ORDER BY order_id;
+
+-- 9. Geolocation Staging Table
+DROP TABLE IF EXISTS stg_geolocation;
+CREATE TABLE stg_geolocation (
+    geolocation_zip_code_prefix Int32,
+    geolocation_lat Float64,
+    geolocation_lng Float64,
+    geolocation_city String,
+    geolocation_state String
+) ENGINE = MergeTree()
+ORDER BY geolocation_zip_code_prefix;

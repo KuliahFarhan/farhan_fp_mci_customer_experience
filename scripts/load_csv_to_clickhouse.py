@@ -62,6 +62,11 @@ MAPPING = [
         "file": "order_payments.csv",
         "table": "stg_order_payments",
         "date_cols": []
+    },
+    {
+        "file": "geolocation.csv",
+        "table": "stg_geolocation",
+        "date_cols": []
     }
 ]
 

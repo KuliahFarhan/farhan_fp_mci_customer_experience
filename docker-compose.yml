@@ -3,7 +3,7 @@ version: "3.8"
 services:
   # --- Analytical Database ---
   clickhouse:
-    image: clickhouse/clickhouse-server:latest
+    image: clickhouse/clickhouse-server:26.3.12.3
     container_name: fp_mci_clickhouse
     ports:
       - "8123:8123"
@@ -42,7 +42,10 @@ services:
 
   # --- Airflow ---
   airflow:
-    image: apache/airflow:2.7.1-python3.9
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    image: fp_mci_airflow:2.7.1-python3.9
     container_name: fp_mci_airflow
     depends_on:
       postgres:
@@ -62,7 +65,6 @@ services:
       - CLICKHOUSE_DATABASE=fp_mci_customer_experience
       - CLICKHOUSE_USER=default
       - CLICKHOUSE_PASSWORD=password
-      - _PIP_ADDITIONAL_REQUIREMENTS=pandas numpy clickhouse-connect python-dotenv
     volumes:
       - ./dags:/opt/airflow/dags
       - ./sql:/opt/airflow/sql
@@ -77,7 +79,7 @@ services:
 
   # --- BI & Visualization ---
   metabase:
-    image: metabase/metabase:latest
+    image: metabase/metabase:v0.60.7.x
     container_name: fp_mci_metabase
     ports:
       - "3002:3000"
