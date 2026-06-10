@@ -28,9 +28,14 @@ Struktur berikut disusun berdasarkan kondisi aktual repository saat dokumen ini 
 |   |-- README.md
 |   `-- screnshoot/
 |-- data/
-|   `-- raw/
+|   |-- raw/
+|   `-- processed/
+|       `-- nlp/
 |-- docs/
 |   |-- assets/
+|   |   |-- dashbord/
+|   |   |-- ml/
+|   |   `-- nlp/
 |   |-- query_outputs/
 |   |-- 05_data_quality_report.md
 |   |-- 06_literature_scoping.md
@@ -38,12 +43,19 @@ Struktur berikut disusun berdasarkan kondisi aktual repository saat dokumen ini 
 |   |-- 08_business_analysis_summary.md
 |   |-- 09_metabase_query_mapping.md
 |   |-- 12_dashboard_query_findings.md
-|   `-- 13_repository_architecture_guide.md
+|   |-- 13_repository_architecture_guide.md
+|   `-- 14_nlp_ml_extension_summary.md
 |-- models/
+|   |-- calibrated_lgbm_low_rating.pkl
+|   |-- feature_schema.json
+|   |-- preprocessor.pkl
+|   |-- sample_inputs.json
+|   `-- predict_risk.py
 |-- notebooks/
 |   |-- 01_data_understanding.ipynb
 |   |-- 02_eda_customer_experience.ipynb
-|   `-- 03_ml_low_rating_prediction.ipynb
+|   |-- FP_MCI_ML_Rating_Risk_V2.ipynb
+|   `-- NLP_Review_Analysis.ipynb
 |-- paper/
 |-- scripts/
 |   |-- export_dashboard_findings.py
@@ -64,13 +76,14 @@ Fungsi folder utama:
 
 - `data/raw/`: tempat dataset mentah CSV, misalnya `orders.csv`, `order_reviews.csv`, `order_items.csv`, `customers.csv`, `sellers.csv`, `products.csv`, `order_payments.csv`, `category_translation.csv`, dan `geolocation.csv`.
 - `docs/`: dokumentasi analisis, mapping dashboard, architecture notes, query findings, dan bahan penjelasan paper.
-- `docs/assets/`: asset gambar atau plot pendukung dokumentasi dan paper. Pada kondisi saat ini folder ini tersedia sebagai area asset, bukan komponen utama pipeline.
+- `docs/assets/`: asset gambar atau plot pendukung dashboard, ML, NLP, dokumentasi, dan paper.
 - `docs/query_outputs/`: output CSV hasil ekspor query dashboard dari `scripts/export_dashboard_findings.py`.
-- `notebooks/`: eksplorasi data dan analisis awal. Notebook ML yang ada diperlakukan sebagai baseline/legacy optional, bukan bagian utama arsitektur final.
+- `docs/14_nlp_ml_extension_summary.md`: ringkasan NLP/ML sebagai value-added supporting components.
+- `notebooks/`: eksplorasi data, EDA, dan extension notebook untuk ML/NLP.
 - `paper/`: folder untuk referensi dan bahan paper IEEE.
 - `scripts/`: script operasional, terutama loader CSV ke ClickHouse dan exporter hasil query dashboard.
 - `sql/`: definisi DDL, ETL mart, helper view, dan analytics SQL untuk Metabase/paper.
-- `models/`: tempat artefak model jika digunakan. Dalam arsitektur final saat ini, advanced ML/NLP belum menjadi core pipeline.
+- `models/`: artefak post-fulfillment low-rating risk simulator. ML tetap supporting extension, bukan core Airflow-ClickHouse-Metabase pipeline.
 - `dashboard/`: dokumentasi dashboard Metabase dan screenshot.
 - `dags/`: DAG Airflow yang mengorkestrasi pipeline.
 - Root files:
@@ -196,7 +209,7 @@ Dashboard Metabase terdiri dari 5 tab:
    - Review distribution.
    - Priority CX segments.
 
-2. **Delivery & Fulfillment Deep Dive**
+2. **Delivery Fulfillment**
    - Delivery status impact.
    - Delay bucket impact.
    - Monthly late rate vs low rating.
@@ -204,14 +217,14 @@ Dashboard Metabase terdiri dari 5 tab:
    - Delivery phase breakdown.
    - Processing/transit bucket.
 
-3. **Segment Risk: Seller, Category, Region**
+3. **Segment Risk**
    - Risk seller.
    - Risk category.
    - Customer region risk.
    - Seller region risk.
    - Priority segment table.
 
-4. **Customer & Order Behavior**
+4. **Customer Order Behavior**
    - Retention funnel.
    - Multi-seller order effect.
    - Item count effect.
@@ -219,7 +232,7 @@ Dashboard Metabase terdiri dari 5 tab:
    - Installment vs review.
    - Review timing.
 
-5. **Geolocation & Spatial Risk**
+5. **Geolocation**
    - Customer state hotspot map.
    - Problem routes.
    - Distance bucket vs late/low rating.
@@ -230,10 +243,10 @@ Dashboard Metabase terdiri dari 5 tab:
 flowchart TD
     A[ClickHouse Mart Tables] --> B[Native SQL Questions in Metabase]
     B --> C[Executive Overview]
-    B --> D[Delivery & Fulfillment]
+    B --> D[Delivery Fulfillment]
     B --> E[Segment Risk]
-    B --> F[Customer & Order Behavior]
-    B --> G[Geolocation & Spatial Risk]
+    B --> F[Customer Order Behavior]
+    B --> G[Geolocation]
     C --> H[CEO-Level Root Cause Summary]
     D --> H
     E --> H
@@ -288,17 +301,17 @@ Dataset CSV mentah disimpan pada folder `data/raw`. Airflow menjalankan pipeline
 - Metabase dashboard dengan 5 tab analisis.
 - Export query findings ke `docs/12_dashboard_query_findings.md` dan `docs/query_outputs/`.
 - Dokumentasi dashboard dan mapping query.
+- NLP review text mining sebagai value-added extension.
+- ML post-fulfillment low-rating risk simulator sebagai value-added extension.
 
 ### In progress
 
-- Penyusunan README final yang merangkum pipeline, dashboard, dan cara menjalankan project.
 - Penyusunan narasi paper IEEE dan PPT presentasi berdasarkan dashboard findings.
 - Penyesuaian final screenshot atau visual Metabase sesuai kebutuhan demo.
 
 ### Planned
 
-- Advanced ML/NLP sebagai future work. Notebook ML baseline yang masih ada diperlakukan sebagai optional/legacy dan bukan core pipeline final.
-- Pengembangan analisis geolocation lanjutan jika diperlukan, misalnya distance optimization atau spatial clustering.
+- Pengembangan analisis geolocation lanjutan jika diperlukan, misalnya spatial clustering atau route diagnostics. Ini belum menjadi full logistics optimization.
 - Migrasi metadata Metabase dari H2 ke Postgres jika dashboard perlu dikelola jangka panjang.
 
 ## 10. How to Reproduce the Pipeline
@@ -348,7 +361,8 @@ Outline README final yang disarankan:
 - Dashboard overview.
 - Key findings.
 - Paper and presentation.
-- Future work: advanced ML/NLP.
+- Value-added extensions: NLP and ML.
+- Analytical cautions.
 
 ## 12. Mermaid Diagram Collection
 
@@ -410,10 +424,10 @@ flowchart LR
 flowchart TD
     A[ClickHouse Mart Tables] --> B[Native SQL Questions in Metabase]
     B --> C[Executive Overview]
-    B --> D[Delivery & Fulfillment]
+    B --> D[Delivery Fulfillment]
     B --> E[Segment Risk]
-    B --> F[Customer & Order Behavior]
-    B --> G[Geolocation & Spatial Risk]
+    B --> F[Customer Order Behavior]
+    B --> G[Geolocation]
     C --> H[CEO-Level Root Cause Summary]
     D --> H
     E --> H

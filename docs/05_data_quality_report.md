@@ -4,6 +4,8 @@
 
 Tahap ini dilakukan untuk memastikan dataset layak digunakan sebelum masuk ke EDA, pemuatan ke ClickHouse, orkestrasi Airflow, dan pembuatan dashboard Metabase. Fokusnya adalah memastikan kelengkapan data kunci, konsistensi relasi antar tabel, serta kualitas kolom tanggal yang dibutuhkan untuk analisis customer experience.
 
+Catatan status: dokumen ini adalah data quality report tahap awal. Pada repository final, `geolocation.csv` sudah masuk pipeline sebagai staging table dan helper view `geo_zip_prefix_reference`, tetapi tetap diperlakukan sebagai supporting layer untuk analisis spasial, bukan core mart utama.
+
 ## 2. Dataset Inventory
 
 Angka di bawah dihitung ulang dari CSV pada data mentah untuk melengkapi output notebook.
@@ -85,7 +87,7 @@ Definisi tanggal penting: lima kolom tanggal pada orders.csv.
 - Missing komentar review tidak menjadi masalah utama karena fokus awal adalah `review_score`, bukan sentiment analysis teks.
 - Order tanpa review tidak digunakan untuk analisis review score, tetapi tetap bisa dipertahankan untuk konteks order.
 - Jika satu order memiliki lebih dari satu review, strategi awal yang disarankan adalah menggunakan review terbaru berdasarkan `review_answer_timestamp` atau melakukan agregasi per `order_id`.
-- geolocation.csv tidak diprioritaskan pada Day 1 karena ukurannya besar; analisis awal cukup memakai `customer_city`, `customer_state`, `seller_city`, dan `seller_state`.
+- Pada tahap awal, geolocation.csv belum diprioritaskan karena ukurannya besar. Pada pipeline final, file ini sudah dimuat ke `stg_geolocation` dan diringkas menjadi `geo_zip_prefix_reference` untuk mendukung analisis geolocation secara non-disruptive.
 
 ## 9. Implication for Customer Experience Analysis
 

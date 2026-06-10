@@ -2,7 +2,7 @@
 predict_risk.py
 Helper script untuk prediksi low-rating risk menggunakan model yang sudah di-train.
 Model: Post-Delivery Low-Rating Risk Estimator (Calibrated LightGBM)
-Framing: Risk scoring tool — bukan sistem prediksi operasional.
+Framing: Risk scoring tool - bukan sistem prediksi operasional.
 """
 import joblib
 import json
@@ -10,11 +10,11 @@ import numpy as np
 import pandas as pd
 import os
 
-MODEL_DIR = '/content/drive/MyDrive/FP_MCI_Data/Dataset/models'
+MODEL_DIR = os.getenv("MODEL_DIR", os.path.dirname(os.path.abspath(__file__)))
 
 
 def load_artifacts():
-    """Load model, preprocessor, dan schema dari Drive."""
+    """Load model, preprocessor, dan schema dari folder model lokal."""
     model       = joblib.load(os.path.join(MODEL_DIR, 'calibrated_lgbm_low_rating.pkl'))
     preprocessor = joblib.load(os.path.join(MODEL_DIR, 'preprocessor.pkl'))
     with open(os.path.join(MODEL_DIR, 'feature_schema.json')) as f:

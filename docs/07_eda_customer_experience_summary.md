@@ -3,6 +3,8 @@
 ## 1. Tujuan EDA
 EDA ini dilakukan untuk mengidentifikasi pola awal dan indikasi faktor-faktor yang berasosiasi dengan skor ulasan pelanggan. Fokus utama adalah menguji hubungan antara performa pengiriman, karakteristik penjual, kategori produk, serta sebaran wilayah terhadap kepuasan pelanggan guna menjawab masalah stagnasi skor review.
 
+Catatan status: dokumen ini merangkum EDA awal. Narasi final repository sudah diperluas ke dashboard 5 tab: Executive Overview, Delivery Fulfillment, Segment Risk, Customer Order Behavior, dan Geolocation. Angka final dashboard mengacu pada `docs/query_outputs/` dan `docs/12_dashboard_query_findings.md`.
+
 ## 2. Data Preparation
 - **Latest Review per Order**: Menggunakan teknik *drop duplicates* pada `order_id` setelah pengurutan temporal untuk memastikan hanya ulasan terbaru yang dihitung untuk setiap pesanan.
 - **Base Tables**:
@@ -46,8 +48,7 @@ Sinyal awal menunjukkan bahwa akar masalah stagnasi skor review berpotensi berka
 2. **Konsistensi Penjual**: Masalah kualitas layanan pada subset penjual tertentu.
 3. **Optimasi Wilayah**: Kendala durasi pengiriman pada rute geografis tertentu.
 
-## 10. Next Step
-- Menyusun **Dashboard Planning** berbasis metrik prioritas (review rate, late rate).
-- Menentukan KPI Metabase untuk memantau performa harian/mingguan.
-- Membuat query SQL analytics untuk pembersihan dan agregasi data ke ClickHouse.
-- Menyiapkan pipeline Airflow untuk otomatisasi pengerjaan data.
+## 10. Final Repository Alignment
+- EDA awal ini diteruskan ke pipeline Airflow, mart ClickHouse, SQL analytics, dan dashboard Metabase.
+- Dashboard final menggunakan 5 tab untuk menjelaskan pocket low rating dan kandidat root cause secara CEO-readable.
+- NLP dan ML diperlakukan sebagai supporting extensions untuk interpretasi, bukan pengganti pipeline Airflow-ClickHouse-Metabase.

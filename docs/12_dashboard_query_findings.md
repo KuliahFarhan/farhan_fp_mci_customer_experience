@@ -168,7 +168,7 @@ Hasil berisi 50 baris. Kolom `order_count` berada pada rentang 31.00 sampai 4147
 
 Ranking ini membantu memilih segmen investigasi yang mempertimbangkan volume dampak dan intensitas risiko.
 
-## 2. Delivery & Fulfillment Deep Dive
+## 2. Delivery Fulfillment
 
 ### Monthly Late Rate vs Low Rating
 
@@ -390,7 +390,7 @@ Hasil berisi 50 baris. Kolom `order_count` berada pada rentang 53.00 sampai 9313
 
 Risk label category mengarahkan audit kategori produk yang berkaitan dengan pengalaman buruk.
 
-## 3. Segment Risk: Seller, Category, Region
+## 3. Segment Risk
 
 ### Top Risk Sellers by Low Rating Contribution
 
@@ -594,7 +594,7 @@ Hasil berisi 13 baris. Kolom `order_count` berada pada rentang 137.00 sampai 696
 
 Seller region risk memberi sinyal wilayah seller yang memerlukan monitoring operasional.
 
-## 4. Customer & Order Behavior
+## 4. Customer Order Behavior
 
 ### Customer Retention Funnel
 
@@ -765,7 +765,7 @@ Hasil berisi 10 baris. Kolom `reviewed_orders` berada pada rentang 5.00 sampai 8
 
 Matrix kompleksitas order menggabungkan jumlah item dan seller untuk membaca potensi friksi fulfilment.
 
-## 5. Geolocation & Spatial Risk
+## 5. Geolocation
 
 ### Customer State Late Hotspot
 
