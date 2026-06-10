@@ -4,12 +4,16 @@ USE fp_mci_customer_experience;
 SET join_use_nulls = 1;
 
 WITH single_seller_orders AS (
-    SELECT
+    SELECT DISTINCT
         order_id,
-        any(seller_id) AS seller_id
+        seller_id
     FROM stg_order_items
-    GROUP BY order_id
-    HAVING uniqExact(seller_id) = 1
+    WHERE order_id IN (
+        SELECT order_id
+        FROM stg_order_items
+        GROUP BY order_id
+        HAVING uniqExact(seller_id) = 1
+    )
 ),
 order_distance AS (
     SELECT
@@ -35,7 +39,6 @@ order_distance AS (
 ),
 bucketed AS (
     SELECT
-        order_id,
         delivery_status,
         delivery_days,
         delay_days,

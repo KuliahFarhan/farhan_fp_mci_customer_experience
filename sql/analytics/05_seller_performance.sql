@@ -12,7 +12,7 @@ WITH
             seller_city,
             seller_state,
             order_id,
-            any(review_score) AS review_score
+            any(review_score) AS order_review_score
         FROM mart_customer_experience_items
         WHERE review_score IS NOT NULL
         GROUP BY
@@ -42,7 +42,7 @@ INNER JOIN (
         seller_id,
         seller_city,
         seller_state,
-        round(avg(review_score), 2) AS avg_review_score
+        round(avg(order_review_score), 2) AS avg_review_score
     FROM seller_review_scores
     GROUP BY
         seller_id,

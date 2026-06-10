@@ -1,0 +1,8 @@
+order_status,order_count,avg_review_score,score_1_count,score_1_rate,low_rating_1_2_count,low_rating_1_2_rate
+shipped,1107,2.0,639,61.92,718,69.57
+canceled,625,1.8,421,69.59,465,76.86
+unavailable,609,1.53,462,77.65,505,84.87
+invoiced,314,1.63,230,74.43,256,82.85
+processing,301,1.26,256,86.78,274,92.88
+created,5,2.33,2,66.67,2,66.67
+approved,2,2.5,1,50.0,1,50.0

@@ -1,0 +1,51 @@
+customer_zip_code_prefix,representative_city,representative_state,order_count,avg_review_score,low_rating_2_rate,late_rate,avg_delay_days
+22621,rio de janeiro,RJ,33,3.06,42.42,24.24,-0.85
+22753,rio de janeiro,RJ,65,3.03,41.54,10.77,-9.32
+45810,porto seguro,BA,40,3.38,37.5,25.0,-9.29
+22723,rio de janeiro,RJ,44,3.36,36.36,25.0,-3.56
+28893,rio das ostras,RJ,37,3.35,35.14,21.62,-5.94
+65075,sao luis,MA,35,3.23,34.29,20.0,-6.91
+22793,rio de janeiro,RJ,120,3.42,34.17,29.17,-5.69
+22713,rio de janeiro,RJ,36,3.5,33.33,19.44,-9.77
+24030,niteroi,RJ,33,3.58,33.33,9.09,-13.62
+22770,rio de janeiro,RJ,50,3.4,32.0,20.0,-8.47
+35790,curvelo,MG,44,3.52,31.82,6.82,-13.12
+22710,rio de janeiro,RJ,54,3.57,31.48,14.81,-7.82
+47850,luis eduardo magalhaes,BA,36,3.56,30.56,19.44,-9.11
+23075,rio de janeiro,RJ,33,3.7,30.3,18.18,-8.48
+13056,campinas,SP,40,3.38,30.0,22.5,-3.95
+88015,florianopolis,SC,37,3.54,29.73,13.51,-11.08
+13295,itupeva,SP,44,3.45,29.55,6.82,-10.79
+22743,rio de janeiro,RJ,51,3.53,29.41,19.61,-9.83
+30330,belo horizonte,MG,34,3.65,29.41,2.94,-14.48
+21321,rio de janeiro,RJ,58,3.55,29.31,10.34,-11.89
+37704,pocos de caldas,MG,31,3.65,29.03,12.9,-12.9
+24360,niteroi,RJ,31,3.74,29.03,12.9,-9.29
+22251,rio de janeiro,RJ,35,3.66,28.57,17.14,-12.6
+22775,rio de janeiro,RJ,110,3.68,28.18,12.73,-11.57
+22620,rio de janeiro,RJ,36,3.72,27.78,13.89,-12.11
+20521,rio de janeiro,RJ,41,3.71,26.83,9.76,-13.39
+26255,nova iguacu,RJ,34,3.85,26.47,17.65,-7.76
+37410,tres coracoes,MG,42,3.76,26.19,9.52,-10.8
+88058,florianopolis,SC,43,3.58,25.58,23.26,-6.02
+29102,vila velha,ES,72,3.79,25.0,13.89,-9.7
+30421,belo horizonte,MG,41,3.61,24.39,2.44,-12.78
+24120,niteroi,RJ,37,3.46,24.32,10.81,-10.28
+22210,rio de janeiro,RJ,33,3.97,24.24,12.12,-12.88
+22795,rio de janeiro,RJ,71,3.86,23.94,9.86,-10.0
+13054,campinas,SP,38,3.55,23.68,26.32,-4.21
+46430,guanambi,BA,38,3.74,23.68,18.42,-9.33
+28895,rio das ostras,RJ,34,3.85,23.53,20.59,-4.12
+21020,rio de janeiro,RJ,34,3.65,23.53,8.82,-16.73
+37470,sao lourenco,MG,34,4.0,23.53,5.88,-15.19
+28300,itaperuna,RJ,47,3.83,23.4,23.4,-8.3
+12233,sao jose dos campos,SP,47,3.89,23.4,2.13,-11.98
+22011,rio de janeiro,RJ,30,3.97,23.33,6.67,-13.14
+8773,mogi das cruzes,SP,30,3.83,23.33,3.33,-11.0
+28970,araruama,RJ,73,3.7,23.29,9.59,-10.65
+22451,rio de janeiro,RJ,56,3.91,23.21,12.5,-12.71
+24220,niteroi,RJ,121,3.85,23.14,10.74,-9.79
+22250,rio de janeiro,RJ,61,3.84,22.95,11.48,-11.27
+36500,uba,MG,35,3.77,22.86,14.29,-9.91
+20551,rio de janeiro,RJ,53,3.91,22.64,9.43,-11.79
+35162,ipatinga,MG,93,3.72,22.58,6.45,-13.59

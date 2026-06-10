@@ -79,7 +79,7 @@ services:
 
   # --- BI & Visualization ---
   metabase:
-    image: metabase/metabase:v0.60.7.x
+    image: metabase/metabase:v0.60.9
     container_name: fp_mci_metabase
     ports:
       - "3002:3000"

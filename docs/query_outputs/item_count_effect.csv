@@ -1,0 +1,5 @@
+item_count_bucket,reviewed_orders,avg_review_score,low_rating_1_2_rate
+1 item,88227,4.16,12.71
+2 items,7440,3.65,26.32
+3 items,1300,3.51,29.77
+4+ items,950,3.32,35.37

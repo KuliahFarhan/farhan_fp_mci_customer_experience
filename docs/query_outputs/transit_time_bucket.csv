@@ -1,0 +1,6 @@
+transit_bucket,reviewed_orders,avg_review_score,low_rating_1_2_rate,avg_transit_days
+<3d,13594,4.38,8.32,1.36
+3-5d,13087,4.34,9.13,3.48
+5-7d,16116,4.33,8.98,5.55
+7-10d,20035,4.28,9.76,7.77
+>10d,32997,3.83,19.84,17.49

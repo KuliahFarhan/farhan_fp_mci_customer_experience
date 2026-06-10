@@ -1,0 +1,4 @@
+delivery_status,order_count,avg_review_score,low_rating_2_orders,low_rating_2_rate,avg_delivery_days,avg_delay_days
+unknown,2843,1.75,2218,78.02,0.0,0.0
+late,6382,2.2,3983,62.41,35.21,11.75
+on_time_or_early,89448,4.29,8293,9.27,10.93,-13.51

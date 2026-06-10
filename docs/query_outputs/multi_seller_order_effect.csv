@@ -1,0 +1,5 @@
+seller_count_bucket,reviewed_orders,avg_review_score,low_rating_1_2_rate,avg_delivery_days
+1 seller,96653,4.12,13.76,12.5
+2 sellers,1205,2.89,46.47,9.09
+3 sellers,54,2.35,61.11,8.07
+4+ sellers,5,1.0,100.0,11.0

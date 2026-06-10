@@ -1,0 +1,6 @@
+review_answer_timing_bucket,review_count,avg_review_score
+same day,959,4.2
+1 day,19674,4.3
+2-7 days,65344,4.28
+8-14 days,3229,4.19
+15+ days,1970,4.12

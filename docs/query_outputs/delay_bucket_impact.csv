@@ -1,0 +1,7 @@
+delay_bucket,order_count,avg_review_score,low_rating_2_orders,low_rating_2_rate,avg_delay_days
+early_or_on_time,89448,4.29,8293,9.27,-13.51
+late_1_3_days,1852,3.29,595,32.13,1.83
+late_4_7_days,1748,2.1,1183,67.68,5.52
+late_8_14_days,1447,1.67,1159,80.1,10.59
+late_15plus_days,1335,1.72,1046,78.35,29.04
+unknown,2843,1.75,2218,78.02,0.0

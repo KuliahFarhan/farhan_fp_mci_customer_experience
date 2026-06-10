@@ -1,5 +1,6 @@
 USE fp_mci_customer_experience;
 
+-- Heuristic dashboard cutoffs: >=25% low-rating and >=15% late-rate mark review and delivery risk. Review against observed distributions before operational use.
 WITH category_summary AS (
     SELECT
         coalesce(product_category_name_english, product_category_name, 'unknown') AS product_category,
@@ -20,7 +21,6 @@ SELECT
     low_rating_2_rate,
     late_rate,
     avg_delay_days,
-    -- Heuristic dashboard cutoffs: >=25% low-rating and >=15% late-rate mark review and delivery risk; review against observed distributions before operational use.
     multiIf(
         low_rating_2_rate >= 25 AND late_rate >= 15, 'High risk category',
         late_rate >= 15, 'Delivery issue category',

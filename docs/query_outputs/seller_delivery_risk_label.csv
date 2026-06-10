@@ -1,0 +1,51 @@
+seller_id,seller_city,seller_state,order_count,avg_review_score,low_rating_2_rate,late_rate,avg_delay_days,risk_label
+1ca7077d890b907f89be8c954a02686a,santana de parnaiba,SP,114,2.2,61.4,15.79,-6.91,High risk seller
+2eb70248d66e0e3ef83659f71b244378,campinas,SP,198,2.72,50.0,10.1,-10.17,Review issue seller
+54965bbe3e4f07ae045b90b0b8541f52,foz do iguacu,PR,74,2.94,44.59,27.03,-2.33,High risk seller
+972d0f9cf61b499a4812cf0bfa3ad3c4,brusque,SC,79,2.96,41.77,11.39,-9.67,Review issue seller
+dc8798cbf453b7e0f98745e396cc5616,sao paulo,SP,41,3.12,41.46,4.88,-9.4,Review issue seller
+bbad7e518d7af88a0897397ffdca1979,sao paulo,SP,68,3.04,41.18,16.18,-7.02,High risk seller
+ad781527c93d00d89a11eecd9dcad7c1,sao jose do rio preto,SP,44,3.07,40.91,27.27,-9.08,High risk seller
+a49928bcdf77c55c6d6e05e09a9b4ca5,sao paulo,SP,98,2.95,40.82,21.43,-4.59,High risk seller
+602044f2c16190c2c6e45eb35c2e21cb,ibitinga,SP,49,2.89,38.78,14.29,-8.63,Review issue seller
+2a1348e9addc1af5aaa619b1a3679d6b,belo horizonte,MG,51,3.0,37.25,23.53,-2.9,High risk seller
+6fd52c528dcb38be2eea044946b811f8,sao paulo,SP,66,3.5,36.36,13.64,-11.21,Review issue seller
+0b35c634521043bf4b47e21547b99ab5,teixeira soares,PR,50,3.49,36.0,14.0,-15.21,Review issue seller
+070d165398b553f3b4b851c216b8a358,sao paulo,SP,31,3.5,35.48,12.9,-8.76,Review issue seller
+8444e55c1f13cd5c179851e5ca5ebd00,congonhal,MG,99,3.07,35.35,6.06,-21.27,Review issue seller
+712e6ed8aa4aa1fa65dab41fed5737e4,videira,SC,78,3.45,34.62,19.23,-10.33,High risk seller
+850913d59ce317156b00f3705f1c3edb,atibaia,SP,32,3.35,34.38,15.62,-7.37,High risk seller
+710e3548e02bc1d2831dfc4f1b5b14d4,rolandia,PR,135,3.4,32.59,2.96,-22.26,Review issue seller
+d3f39f05462b79a4562d35893a28f159,mococa,SP,34,3.37,32.35,11.76,-12.3,Review issue seller
+835f0f7810c76831d6c7d24c7a646d4d,sao paulo,SP,44,3.3,31.82,25.0,-5.67,High risk seller
+c60b801f2d52c7f7f91de00870882a75,guarulhos,SP,41,3.32,31.71,14.63,-10.67,Review issue seller
+18a349e75d307f4b4cc646a691ed4216,sao paulo,SP,120,3.39,31.67,5.0,-14.87,Review issue seller
+b2479f944e1b90cf8a5de1bbfde284d6,ibitinga,SP,102,3.29,31.37,11.76,-8.53,Review issue seller
+88460e8ebdecbfecb5f9601833981930,maringa,PR,247,3.35,31.17,16.6,-11.02,High risk seller
+5058e8c1e82653974541e83690655b4a,itaquaquecetuba,SP,62,3.08,30.65,11.29,-16.05,Review issue seller
+cac4c8e7b1ca6252d8f20b2fc1a2e4af,indaiatuba,SP,74,3.51,29.73,16.22,-5.1,High risk seller
+a7f13822ceb966b076af67121f87b063,itaquaquecetuba,SP,74,3.44,29.73,4.05,-16.93,Review issue seller
+ede0c03645598cdfc63ca8237acbe73d,ribeirao preto,SP,44,3.62,29.55,29.55,-4.87,High risk seller
+2089a6d640999f9b9141ac719b2af596,sao carlos,SP,44,3.73,29.55,11.36,-11.44,Review issue seller
+95f83f51203c626648c875dd41874c7f,borda da mata,MG,52,3.21,28.85,3.85,-14.26,Review issue seller
+82e0a475a88cc9595229d8029273f045,sao paulo,SP,42,3.46,28.57,9.52,-8.14,Review issue seller
+3c7c4a49ec3c6550809089c6a2ca9370,sao paulo,SP,141,3.71,28.37,5.67,-9.44,Review issue seller
+cd06602b43d8800bd0afad514919d35c,sao paulo,SP,44,3.68,27.27,4.55,-11.63,Review issue seller
+7040e82f899a04d1b434b795a43b4617,sao paulo,SP,210,3.53,27.14,7.62,-10.28,Review issue seller
+8e6d7754bc7e0f22c96d255ebda59eba,sao jose dos campos,SP,85,2.98,27.06,12.94,-6.29,Review issue seller
+66dc1b1632bd6a3e508510c5b3492107,jau,SP,37,3.43,27.03,2.7,-14.44,Review issue seller
+6973a06f484aacf400ece213dbf3d946,sao jose dos campos,SP,94,3.5,26.6,13.83,-7.5,Review issue seller
+f46490624488d3ff7ce78613913a7711,guarulhos,SP,83,3.46,26.51,10.84,-9.16,Review issue seller
+897060da8b9a21f655304d50fd935913,ribeirao preto,SP,314,3.39,25.8,9.24,-10.13,Review issue seller
+7c67e1448b00f6e969d365cea6b010ab,itaquaquecetuba,SP,976,3.35,25.72,8.91,-11.53,Review issue seller
+ef990a83bbea832f36ebe81376335aa8,joinville,SC,43,3.66,25.58,20.93,-8.45,High risk seller
+891071be6ba827b591264c90c2ae8a63,sao paulo,SP,92,3.7,25.0,13.04,-11.56,Review issue seller
+ea67327e24487bdfac5fbfa37ea124df,ibitinga,SP,32,3.56,25.0,3.12,-15.24,Review issue seller
+229c3efbfb0ea2058de4ccdfbc3d784a,belo horizonte,MG,120,3.64,25.0,1.67,-12.32,Review issue seller
+751bdc4d83a466c7206cd42e8f426b03,ribeirao pires,SP,52,3.62,25.0,0.0,-12.42,Review issue seller
+23613d49c3ac2bd302259e55c06c050c,porto ferreira,SP,69,3.66,24.64,8.7,-11.38,Monitor
+1835b56ce799e6a4dc4eddc053f04066,ibitinga,SP,420,3.59,24.52,10.24,-10.78,Monitor
+5343d0649eca2a983820bfe93fc4d17e,santo andre,SP,70,3.61,24.29,10.0,-12.59,Monitor
+75d34ebb1bd0bd7dde40dd507b8169c3,salvador,BA,62,3.82,24.19,11.29,-16.84,Monitor
+431af27f296bc6519d890aa5a05fdb11,ribeirao preto,SP,116,3.77,24.14,13.79,-7.54,Monitor
+36a968b544695394e4e9d7572688598f,santos,SP,154,3.63,24.03,3.25,-12.31,Monitor
