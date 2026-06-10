@@ -66,12 +66,12 @@ Kolom tanggal yang dipakai:
 
 Definisi tanggal penting: lima kolom tanggal pada orders.csv.
 
-| Kondisi                                                                  | Jumlah Order | Implikasi                                                                     |
-| ------------------------------------------------------------------------ | ------------ | ----------------------------------------------------------------------------- |
-| Status delivered tetapi `order_delivered_customer_date` kosong           | 8            | Perlu dikeluarkan dari analisis delivery karena tanggal terima tidak tersedia |
-| Status bukan delivered tetapi `order_delivered_customer_date` terisi     | 6            | Perlu validasi status atau perlakuan khusus saat analisis delivery            |
+| Kondisi                                                                      | Jumlah Order | Implikasi                                                                     |
+| ---------------------------------------------------------------------------- | ------------ | ----------------------------------------------------------------------------- |
+| Status delivered tetapi `order_delivered_customer_date` kosong             | 8            | Perlu dikeluarkan dari analisis delivery karena tanggal terima tidak tersedia |
+| Status bukan delivered tetapi `order_delivered_customer_date` terisi       | 6            | Perlu validasi status atau perlakuan khusus saat analisis delivery            |
 | `order_delivered_customer_date` melewati `order_estimated_delivery_date` | 7827         | Indikasi keterlambatan pengiriman                                             |
-| Ada tanggal penting yang kosong (setidaknya satu kolom tanggal kosong)   | 2980         | Perlu filter subset untuk analisis berbasis waktu                             |
+| Ada tanggal penting yang kosong (setidaknya satu kolom tanggal kosong)       | 2980         | Perlu filter subset untuk analisis berbasis waktu                             |
 
 ## 7. Order-Review Join Check
 
@@ -79,28 +79,4 @@ Definisi tanggal penting: lima kolom tanggal pada orders.csv.
 | ----------------------------------- | ------ | ---------------------------------------------------------------------------------- |
 | Order tanpa review                  | 768    | Tidak dipakai untuk analisis review score, namun dapat dipakai untuk konteks order |
 | Review tanpa order                  | 0      | Konsistensi relasi baik                                                            |
-| Order dengan lebih dari satu review | 547    | Perlu strategi pemilihan review (terbaru) atau agregasi per `order_id`             |
-
-## 8. Data Quality Decision
-
-- Untuk analisis delivery, gunakan order dengan timestamp delivery lengkap.
-- Missing komentar review tidak menjadi masalah utama karena fokus awal adalah `review_score`, bukan sentiment analysis teks.
-- Order tanpa review tidak digunakan untuk analisis review score, tetapi tetap bisa dipertahankan untuk konteks order.
-- Jika satu order memiliki lebih dari satu review, strategi awal yang disarankan adalah menggunakan review terbaru berdasarkan `review_answer_timestamp` atau melakukan agregasi per `order_id`.
-- Pada tahap awal, geolocation.csv belum diprioritaskan karena ukurannya besar. Pada pipeline final, file ini sudah dimuat ke `stg_geolocation` dan diringkas menjadi `geo_zip_prefix_reference` untuk mendukung analisis geolocation secara non-disruptive.
-
-## 9. Implication for Customer Experience Analysis
-
-- Review score dapat digunakan sebagai metrik utama karena tidak memiliki missing pada tanggal review.
-- Delivery delay hanya dapat dianalisis pada subset order dengan timestamp lengkap.
-- Seller, kategori produk, dan region dapat dianalisis melalui join antar tabel utama.
-- Filtering diperlukan agar hasil analisis tidak bias akibat missing timestamp dan multiple review per order.
-
-## 10. Next Step
-
-- Membuat dataset gabungan untuk EDA customer experience.
-- Menghitung distribusi review score.
-- Menghitung tren review score per bulan.
-- Menghitung delivery duration dan delivery delay.
-- Membandingkan review score antara on-time dan late delivery.
-- Menganalisis seller, kategori produk, dan wilayah yang berkontribusi terhadap review rendah.
+| Order dengan lebih dari satu review | 547    | Perlu strategi pemilihan review (terbaru) atau agregasi per `order_id`           |

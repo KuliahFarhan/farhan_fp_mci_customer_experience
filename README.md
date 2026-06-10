@@ -201,6 +201,8 @@ Output ClickHouse utama:
 
 ## Proof of Successful DAG Execution
 
+![1781100526595](image/README/1781100526595.png)
+
 Validasi pipeline dilakukan pada task `validate_pipeline_outputs`. Beberapa check yang dijalankan:
 
 - staging dan mart table tidak kosong;
@@ -414,6 +416,8 @@ Insight utama:
 NLP dan ML mendukung interpretasi dashboard, tetapi tidak menggantikan scope wajib project: Airflow -> ClickHouse -> Metabase -> dashboard findings.
 
 ### NLP Extension: Portuguese Review Text Mining
+
+![1781100605032](image/README/1781100605032.png)
 
 NLP digunakan sebagai extension untuk membaca alasan kualitatif di balik skor review. Analisis dilakukan pada teks review bahasa Portugis Brazil dari `order_reviews.csv`, terutama `review_comment_title` dan `review_comment_message`.
 
