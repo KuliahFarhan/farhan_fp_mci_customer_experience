@@ -217,9 +217,7 @@ Screenshot Airflow belum disertakan karena asset manual belum tersedia. Setelah 
 
 Dashboard Metabase bernama **Customer Experience Root Cause Dashboard**. Dashboard ini dirancang bukan sebagai laporan angka biasa, melainkan sebagai alat analisis yang memandu Customer Experience Analyst menjawab satu pertanyaan besar secara bertahap: *mengapa review score sulit naik, dan di mana harus mulai bertindak?*
 
-Setiap tab memiliki peran yang berbeda dalam narasi analisis, dari gambaran besar di tingkat CEO hingga detail operasional yang bisa langsung ditindaklanjuti oleh tim CX.
-
-> Angka pada bagian ini divalidasi dari `docs/query_outputs/` dan `docs/12_dashboard_query_findings.md`. Screenshot digunakan sebagai referensi tampilan dan alur interpretasi, bukan sebagai sumber angka utama.
+Setiap tab memiliki peran yang berbeda dalam narasi analisis, dari gambaran besar di tingkat CEO hingga detail detail lainya  yang bisa memberikan gamabran luas.
 
 ---
 
